@@ -1,0 +1,77 @@
+---
+title: "DMtest"
+author: "James Dai and Xiaoyu Wang"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{DMtest}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+# Introduction
+Cancer development is ubiquitously associated with aberrant DNA methylation.
+Noninvasive biomarkers incorporating DNA methylation signatures are of rising
+interest for cancer early detection. Statistical tests for discovering differential
+methylation markers have largely focused on assessing differences of mean
+methylation levels, e.g., between cancer and normal samples. Cancer is a heterogeneous 
+disease. Increased stochastic variability of cancer DNA methylation has been observed 
+across cancers (Hansen and others, 2011; Phipson and Oshlack, 2014), which may reflect 
+adaptation to local tumor environments in the carcinogenesis process. To date, 
+differentially variable CpG (DVC) and excessive outliers have been examined in 
+tumor-adjacent normal tissue samples and in cancer precursors (Teschendor and Widschwendter,
+2012; Teschendor and others, 2016), with the potential of identifying early detection
+markers for the risk of progression to cancer.     
+    
+    
+In Dai et al (2021), we propose a joint constrained hypothesis test for hypermethylation 
+and hypervariable CpG methylation  (DMVC+) cites in a high-throughput profiling experiment. 
+In the DMtest R package we implemented the constrained hypothesis test, along with the 
+standard tests for DMC and DVC. We also implemented another constrained test where there 
+is no constraint for mean difference, only increased variability. As shown in Dai et al (2021),
+the proposed joint tests substantially improved detection power in 
+simulation studies and the TCGA data example, yielding more cancer CpG markers than the standard DMC and DVC tests.
+
+# Example
+The following example takes the DNA methylation data from 334 samples of TCGA colorectal cancer samples (TCGA-COAD);
+In the illustration we use representative 500 CpG probes to save time. For genome-wide data with potentially > 500,000 CpGs,
+users can invoke parallel computing mode by setting appropriate numbers of cores.
+
+```{r setup}
+library(DMtest)
+#load example data
+data(beta)
+dim(beta)
+data("covariate")
+dim(covariate)
+#compute p-values 
+out=dmvc(beta=beta,covariate=covariate)
+head(out)
+```
+
+# Reference
+Dai, J, Wang, X, Chen, H and others. (2021). Incorporating increased variability in discovering cancer methylation markers, 
+Biostatistics, submitted.    
+    
+    
+Hansen, K D, Timp, W, Bravo, H C and others. (2011). Increased methylation variation in
+epigenetic domains across cancer types, Nature Genetics 43, 768–775.    
+    
+    
+Phipson, B and Oshlack, A. (2014). Diffvar: a new method for detecting differential variability
+with application to methylation in cancer and aging, Genome Biol 15, 465.    
+    
+    
+Teschendorff, A E and Widschwendter, M. (2012). Differential variability improves the
+identification of cancer risk markers in dna methylation studies profiling precursor cancer le-
+sions. Bioinformatics 28, 1487–1494.   
+    
+    
+Teschendorff, A E, Jones, A and Widschwendter, M. (2016). Stochastic epigenetic
+outliers can define field defects in cancer. BMC Bioinformatics 17(178).

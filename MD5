@@ -1,0 +1,16 @@
+c8ce432afd3a0d580b92c037624f8ea5 *DESCRIPTION
+5909fa82a44957f86844178276ed3ad7 *NAMESPACE
+d12cf5cee3bb20da977428041398dde3 *R/dmvc.R
+89fb81439f9e61bba73aa45e0747cb18 *R/dmvc.data.beta.R
+d48a1e224f75d2615352222e9b4c5eaf *R/dmvc.data.covariate.R
+16f17eee7bb59bd1af1faa50beaa5e0d *build/vignette.rds
+0f13ce51b229ab57d4070732c282ccc0 *data/beta.RData
+66a247ca61a527e46b9276945f97297b *data/covariate.RData
+e7d201fc9e3fd93afcc372e99fe9ab33 *data/datalist
+4a04025446e481b3cf0242b34f529d4f *inst/doc/introduction.R
+f1b3946f35c62130477130e8ab840e8e *inst/doc/introduction.Rmd
+d2bacb40f0400a21666bce55d3bc2881 *inst/doc/introduction.html
+2f90e0c3d0a203a3d3ed5d3960468728 *man/beta.Rd
+862068899518ff1bb839778612e4dc4e *man/covariate.Rd
+1dbd39fa7928d302bded5e8d85cab892 *man/dmvc.Rd
+f1b3946f35c62130477130e8ab840e8e *vignettes/introduction.Rmd
